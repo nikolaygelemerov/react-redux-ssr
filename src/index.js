@@ -1,16 +1,20 @@
 import express from 'express';
-import renderer from './helpers/renderer';
+import renderer2 from './helpers/renderer2';
 
-const production = process.env.NODE_ENV;
+const PORT = process.env.PORT || 3000;
+const enviroment = process.env.NODE_ENV;
 const app = express();
 
 app.use(express.static('public'));
 
 app.get('/', (req, res) => {
-  console.log('process: ', production);
-  res.send(renderer());
+  if (enviroment === 'production') {
+    res.sendFile('index.html');
+  } else {
+    res.send(renderer2());
+  }
 });
 
 app.listen(3000, () => {
-  console.log('Listening on port: ', production);
+  console.log('Listening on port: ', enviroment);
 });
