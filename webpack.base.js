@@ -1,3 +1,6 @@
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const path = require('path');
+
 module.exports = {
   // Tell webpack to run babel on every file it runs through
   module: {
@@ -15,5 +18,10 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new CleanWebpackPlugin(['build/*', 'public/*'], {
+      root: path.resolve(__dirname)
+    })
+  ]
 };
