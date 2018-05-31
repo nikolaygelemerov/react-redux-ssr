@@ -5,10 +5,11 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm-run-all --parallel dev:*",
     "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
-    "dev:build:server":
+    "dev:build-server":
       "webpack --config webpack.server.js --mode development --watch",
-    "dev:build:client":
+    "dev:build-client":
       "webpack --config webpack.client.js --mode development --watch"
   },
   "keywords": [],
