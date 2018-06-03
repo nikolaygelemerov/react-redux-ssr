@@ -73,7 +73,7 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       title: `Kaufberater`,
-      template: path.resolve(__dirname, 'src/helpers/renderer.js'),
+      template: path.resolve(__dirname, 'src/helpers/renderer.prod.js'),
       minify: {
         collapseWhitespace: true,
         collapseInlineTagWhitespace: true,

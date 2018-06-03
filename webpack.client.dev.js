@@ -6,7 +6,6 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 
 const config = {
-  devtool: 'source-map',
   // Tell webpack the root file of our
   // server application
   entry: path.resolve(__dirname, 'src/client/client.js'),
@@ -28,7 +27,6 @@ const config = {
               loader: 'css-loader',
               options: {
                 importLoaders: true,
-                sourceMap: true,
                 url: false
               }
             },
