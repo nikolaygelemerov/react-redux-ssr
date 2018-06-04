@@ -16,13 +16,13 @@ const config = {
 
   // Tell webpack the root file of our
   // server application
-  entry: path.resolve(__dirname, 'src/client/client.js'),
+  entry: path.resolve(__dirname, '../src/client/client.js'),
 
   // Tell webpack where to put the output file
   // that is generated
   output: {
     filename: '[id].[hash].chunk.js',
-    path: path.resolve(__dirname, 'public')
+    path: path.resolve(__dirname, '../public')
   },
 
   // Tell webpack to manage scss files using loaders
@@ -83,7 +83,7 @@ const config = {
     }),
     new HtmlWebpackPlugin({
       title: `Kaufberater`,
-      template: path.resolve(__dirname, 'src/helpers/renderer.prod.js'),
+      template: path.resolve(__dirname, '../src/helpers/renderer.prod.js'),
       minify: {
         collapseWhitespace: true,
         collapseInlineTagWhitespace: true,

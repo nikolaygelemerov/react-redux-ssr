@@ -8,12 +8,13 @@
     "dev:server": "nodemon --watch build --exec \"node build/bundle.js\"",
     "prod:server": "node build/bundle.js",
     "dev:build-server":
-      "webpack --config webpack.server.js --mode development --watch",
+      "webpack --config config/webpack.server.js --mode development --watch",
     "dev:build-client":
-      "webpack --config webpack.client.dev.js --mode development --watch",
-    "prod:build-server": "webpack --config webpack.server.js --mode production",
+      "webpack --config config/webpack.client.dev.js --mode development --watch",
+    "prod:build-server":
+      "webpack --config config/webpack.server.js --mode production",
     "prod:build-client":
-      "webpack --config webpack.client.prod.js --mode production",
+      "webpack --config config/webpack.client.prod.js --mode production",
     "dev": "npm-run-all --parallel dev:*",
     "prod": "GENERATE_SOURCEMAP=true npm-run-all --parallel prod:*"
   },
