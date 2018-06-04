@@ -18,6 +18,8 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, '../build')
   },
+
+  // Tell webpack to exclude node libraries(express ...) /server only/
   externals: [nodeExternals()]
 };
 
