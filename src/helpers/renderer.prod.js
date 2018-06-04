@@ -7,8 +7,6 @@ export default () => {
 
   return `
     <html>
-        <head>
-        </head>
         <body>
             <div id="root">${content}</div>
         </body>

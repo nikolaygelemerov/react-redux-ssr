@@ -1,4 +1,5 @@
 import express from 'express';
+
 import rendererDev from './helpers/renderer.dev';
 import rendererProd from './helpers/renderer.prod.js';
 
@@ -12,6 +13,6 @@ app.get('/', (req, res) => {
   res.send(enviroment === 'development' ? rendererDev() : rendererProd());
 });
 
-app.listen(3000, () => {
+app.listen(PORT, () => {
   console.log('Listening on port: ', PORT);
 });
