@@ -3,7 +3,6 @@ const merge = require('webpack-merge');
 const baseConfig = require('./webpack.base.js');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const autoprefixer = require('autoprefixer');
-const webpack = require('webpack');
 
 const config = {
   // Tell webpack the root file of our
@@ -16,6 +15,8 @@ const config = {
     filename: 'bundle.js',
     path: path.resolve(__dirname, 'public')
   },
+
+  // Tell webpack to manage scss files using loaders
   module: {
     rules: [
       {
@@ -26,8 +27,7 @@ const config = {
             {
               loader: 'css-loader',
               options: {
-                importLoaders: true,
-                url: false
+                importLoaders: true
               }
             },
             {
@@ -55,6 +55,8 @@ const config = {
       }
     ]
   },
+
+  // Tell webpack to customize the compiled bundle
   plugins: [new ExtractTextPlugin({ filename: 'style.css' })]
 };
 

@@ -6,8 +6,14 @@ const autoprefixer = require('autoprefixer');
 const webpack = require('webpack');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const shouldUseSourceMap = process.env.GENERATE_SOURCEMAP !== 'false';
 
 const config = {
+  // Tell webpack to produce source maps for production
+  // We generate sourcemaps in production. This is slow but gives good results.
+  // You can exclude the *.map files from the build during deployment.
+  devtool: shouldUseSourceMap ? 'source-map' : false,
+
   // Tell webpack the root file of our
   // server application
   entry: path.resolve(__dirname, 'src/client/client.js'),
@@ -18,6 +24,8 @@ const config = {
     filename: '[id].[hash].chunk.js',
     path: path.resolve(__dirname, 'public')
   },
+
+  // Tell webpack to manage scss files using loaders
   module: {
     rules: [
       {
@@ -29,7 +37,7 @@ const config = {
               loader: 'css-loader',
               options: {
                 importLoaders: true,
-                sourceMap: false,
+                sourceMap: true,
                 url: false
               }
             },
@@ -58,14 +66,16 @@ const config = {
       }
     ]
   },
+
+  // Tell webpack to customize the compiled
   plugins: [
     // Extract imported CSS into own file
     new ExtractTextPlugin('[name].bundle.[chunkhash].css', {
-      allChunks: false
+      allChunks: true
     }),
     // Minify JS
     new UglifyJsPlugin({
-      sourceMap: false
+      sourceMap: true
     }),
     // Minify CSS
     new webpack.LoaderOptionsPlugin({
